@@ -3,43 +3,34 @@ package com.kdbb.usermanagement.model;
 import javax.persistence.*;
 
 @Entity
+@Table(name= "t_pdg_usuario")
+@SequenceGenerator(name = "usuario", sequenceName = "sq_usuario", allocationSize=1)
 public class User {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(generator = "usuario", strategy = GenerationType.SEQUENCE)
+    @Column(name = "cd_usuario")
     long id;
-    @Column(name = "name")
+    @Column(name = "nm_usuario")
     String nomeCompleto;
 
-    @Column(name = "identity")
+    @Column(name = "ds_rg")
     String rg;
 
-    @Column(name = "document")
+    @Column(name = "ds_cpr")
     String cpf;
 
-    @Column(name = "city")
-    String cidade;
-
-    @Column(name = "neighborhood")
-    String bairro;
-
-    @Column(name = "telephone")
-    int telefone;
-
-    @Column(name = "cellphone")
+    @Column(name = "nr_celular")
     int celular;
 
     public User() {
     }
 
-    public User(long id, String nomeCompleto, String rg, String cpf, String cidade, String bairro, int telefone, int celular) {
+    public User(long id, String nomeCompleto, String rg, String cpf, int celular) {
         this.id = id;
         this.nomeCompleto = nomeCompleto;
         this.rg = rg;
         this.cpf = cpf;
-        this.cidade = cidade;
-        this.bairro = bairro;
-        this.telefone = telefone;
         this.celular = celular;
     }
 
@@ -49,6 +40,14 @@ public class User {
 
     public void setId(long id) {
         this.id = id;
+    }
+
+    public String getNomeCompleto() {
+        return nomeCompleto;
+    }
+
+    public void setNomeCompleto(String nomeCompleto) {
+        this.nomeCompleto = nomeCompleto;
     }
 
     public String getRg() {
@@ -67,43 +66,11 @@ public class User {
         this.cpf = cpf;
     }
 
-    public String getCidade() {
-        return cidade;
-    }
-
-    public void setCidade(String cidade) {
-        this.cidade = cidade;
-    }
-
-    public String getBairro() {
-        return bairro;
-    }
-
-    public void setBairro(String bairro) {
-        this.bairro = bairro;
-    }
-
-    public int getTelefone() {
-        return telefone;
-    }
-
-    public void setTelefone(int telefone) {
-        this.telefone = telefone;
-    }
-
     public int getCelular() {
         return celular;
     }
 
     public void setCelular(int celular) {
         this.celular = celular;
-    }
-
-    public String getNomeCompleto() {
-        return nomeCompleto;
-    }
-
-    public void setNomeCompleto(String nomeCompleto) {
-        this.nomeCompleto = nomeCompleto;
     }
 }

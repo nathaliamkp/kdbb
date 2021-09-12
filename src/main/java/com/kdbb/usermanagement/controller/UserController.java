@@ -12,7 +12,7 @@ import static java.util.Objects.nonNull;
 
 @Controller
 @RequestMapping(path = "kdbb-user-account/api")
-public class userControlle {
+public class UserController {
 
     @Autowired
     private UserService userService;
